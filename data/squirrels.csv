@@ -1,0 +1,35 @@
+id_num,date,location ,start_time,end_time,condition,condition2,temp(F),trappers,trap_zone,species,total_wt(g),bag_wt(g),sq_wt(g),sex,age,pit_tagnum,ear_tagnum(r/l),fur_dye,freeze_brand
+1,6-Sep-10,slu campus,14:23:00,15:30:00,cloudy,cool,NA,whole class,E,SCCA,860,NA,NA,M,A,NA,R001,right hip,right hip
+2,6-Sep-10,slu campus,14:23:00,15:30:00,cloudy,cool,NA,whole class,F,SCCA,NA,NA,NA,M,A,NA,NA,right hip,right backleg
+3,6-Sep-10,slu campus,14:23:00,15:30:00,cloudy,cool,NA,whole class,B,SCCA,800,NA,NA,M,A,NA,R002,center rump,left leg
+4,6-Sep-10,slu campus,14:23:00,15:30:00,cloudy,cool,NA,whole class,B,SCCA,700,NA,NA,M,A,NA,R003,left leg,left middle
+5,6-Sep-10,slu campus,14:23:00,15:30:00,cloudy,cool,NA,whole class,B,SCCA,780,NA,NA,M,A,NA,R004,left middle,right middle 
+6,8-Sep-10,NA,7:30:00,9:10:00,cool,partly cloudy,65,erin_hannah_leah_abbie,C,SCCA,950,NA,NA,F,A,NA,L005,back middle,left hip
+7,8-Sep-10,NA,7:30:00,9:10:00,cool,partly cloudy,65,erin_hannah_leah_abbie,C,SCCA,750,NA,NA,F,A,NA,L007,left hip,center rump
+8,8-Sep-10,NA,7:30:00,9:10:00,cool,partly cloudy,65,erin_hannah_leah_abbie,C,SCCA,730,NA,NA,M,A,NA,R008,left hip,left hip
+9,8-Sep-10,NA,7:30:00,9:10:00,cool,partly cloudy,65,erin_hannah_leah_abbie,C,SCCA,710,NA,NA,M,SA,NA,NA,right middle,right shoulder
+10,8-Sep-10,NA,7:30:00,9:10:00,cool,partly cloudy,65,erin_hannah_leah_abbie,C,SCCA,780,NA,NA,F,NA,NA,NA,NA,right hip
+11,8-Sep-10,NA,7:30:00,9:10:00,cool,partly cloudy,65,erin_hannah_leah_abbie,C,SCCA,790,NA,NA,F,A,NA,L009,right hip,right leg 
+12,10-Sep-10,front of JHS,13:30:00,15:10:00,cloudy,NA,70,andrew_janiet_eddie,C,SCCA,800,NA,NA,F,A,NA,L010,left middle,right hip
+13,10-Sep-10,front of JHS,13:30:00,15:10:00,cloudy,NA,70,andrew_janiet_eddie,C,SCCA,790,NA,NA,M,A,NA,R011,right hip,right leg 
+14,10-Sep-10,front of JHS,13:30:00,15:10:00,cloudy,NA,70,andrew_janiet_eddie,C,SCCA,870,NA,NA,F,A,NA,NA,right leg,center shoulder
+15,10-Sep-10,front of JHS,13:30:00,15:10:00,cloudy,NA,70,andrew_janiet_eddie,C,SCCA,NA,NA,NA,F,A,NA,L009,right leg,right hip
+16,10-Sep-10,front of JHS,13:30:00,15:10:00,cloudy,NA,70,andrew_janiet_eddie,C,SCCA,710,NA,NA,M,A,NA,R012,left hip,center middle
+17,10-Sep-10,front of JHS,13:30:00,15:10:00,cloudy,NA,70,andrew_janiet_eddie,C,SCCA,750,NA,NA,F,A,NA,L013,center shoulder,center rump
+18,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,A9,SCCA,NA,NA,NA,NA,NA,NA,R011,NA,NA
+19,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,A10,SCCA,760,NA,NA,F,NA,NA,L014,both legs,left leg
+20,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,A11,SCCA,850,NA,NA,M,NA,NA,R015,NA,center rump
+21,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,C6,SCCA,800,NA,NA,M,NA,NA,NA,NA,right middle 
+22,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,F3,SCCA,750,NA,NA,F,NA,NA,L016,right hip,right leg 
+23,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,A11,SCCA,870,NA,NA,M,NA,NA,R017,left leg,left leg
+24,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,F5,SCCA,890,NA,NA,F,NA,NA,R018,left middle,left hip
+25,1-Oct-10,campus,13:30:00,16:00:00,cloudy,NA,60,malthus_lizzy_amanda_ecb,C6,SCCA,790,NA,NA,M,NA,NA,R019,right leg,center rump
+26,8-Oct-10,campus,13:40:00,NA,partly cloudy,breezy,65,jackie_ecb_eddie_jessica,C,SCCA,760,NA,NA,F,NA,L14,L16,NA,NA
+27,8-Oct-10,campus,13:40:00,NA,partly cloudy,breezy,65,jackie_ecb_eddie_jessica,C,SCCA,760,NA,NA,F,NA,NA,L,left knee,left leg
+28,8-Oct-10,campus,13:40:00,NA,partly cloudy,breezy,65,jackie_ecb_eddie_jessica,E,SCCA,820,NA,NA,M,NA,NA,R20,right middle,left hip
+29,8-Oct-10,campus,13:40:00,NA,partly cloudy,breezy,65,jackie_ecb_eddie_jessica,C,SCCA,740,160,NA,F,NA,NA,NA,center hip,right middle 
+30,8-Oct-10,campus,13:40:00,NA,partly cloudy,breezy,65,jackie_ecb_eddie_jessica,E,SCCA,760,NA,NA,F,NA,NA,NA,NA,NA
+31,1-Sep-11,around JHS,9:00:00,11:30:00,clear,NA,70,leah_kate_eddie_andrew,NA,SCCA,850,160,690,M,1,NA,R051,NA,left leg
+32,1-Sep-11,around JHS,9:00:00,11:30:00,clear,NA,70,leah_kate_eddie_andrew,java field ,SCCA,800,160,640,F,SA,NA,NA,center rump,right leg 
+33,1-Sep-11,around JHS,9:00:00,11:30:00,clear,NA,70,leah_kate_eddie_andrew,NA,SCCA,720,160,760,F,A,NA,L007,left hip,left hip
+34,2-Sep-11,around JHS,15:00:00,NA ,clear ,warm ,80,ecb_maria_kate_erin ,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

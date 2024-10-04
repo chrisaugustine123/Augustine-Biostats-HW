@@ -1,0 +1,12 @@
+---
+title: Homework14
+format: html
+author: Christopher Augustine
+---
+
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(here) 
+```
+

@@ -1,0 +1,58 @@
+---
+title: "Oct-4-2024"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(here)
+```
+
+```{r}
+drugs <- read.csv(here("code" ,"drug_resistance.csv"))
+```
+
+```{r}
+drug_resistance$Treatment<- as.factor(drug_resistance$Treatment)
+levels(drug_resistance$Treatment)
+```
+drugs<- drug_resistance
+fix the treatment variable 
+```{r}
+drugs<- drug_resistance
+drugs$Treatment<- as.factor(drugs$Treatment)
+levels(drugs$Treatment)
+```
+find the rows that have any versions of "Control" using which function 
+
+```{r}
+fix<- which(drugs$Treatment%in% c("cantrol","control","Control"))
+#identify the rows that need repair 
+drugs$Treatment[fix] <- "control"
+levels(drugs$Treatment)
+drugs$Treatment<- factor(drugs$Treatment) #this just tells R to relist the levels of my factor 
+levels(drugs$Treatment)
+```
+```{r}
+levels(drugs$Treatment)
+fix2<- which(drugs$Treatment%in% c("drug x 2", "drug2", "Drugx2" ))
+drugs$Treatment[fix2] <- "drug_2"
+drugs$Treatment<- factor(drugs$Treatment) 
+levels(drugs$Treatment)
+```
+
+```{r}
+thirdfix<- which(drugs$Treatment%in% c("drug x 3","Drug x 3", "drug3"))
+drugs$Treatment[thirdfix] <- "drug3"
+drugs$Treatment<- factor(drugs$Treatment)
+```
+
+```{r}
+levels(drugs$`tech name`)
+drugs
+
+```
+

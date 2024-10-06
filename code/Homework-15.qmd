@@ -1,0 +1,92 @@
+---
+title: "Homework-15"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+
+Homework 15 for biostat class looking into chapter 3 of thr gswr book. 
+Date Oct-6-2024
+
+setting things up 
+```{r}
+rm(list=ls())
+library(tidyverse) 
+library (here) 
+library(dplyr) 
+library(ggplot2)
+```
+
+importing the dataset "compensation.csv" and assigning it 
+```{r}
+compensation<- read.csv(here("data","compensation.csv"))
+```
+
+getting a summary of the data set and various statistics with the numerical data
+```{r}
+summary(compensation)
+```
+Using the function "select" to grab columns (adding a "-" in front of the column name gives all but that one)
+
+```{r}
+select(compensation, Fruit)
+select(compensation, -Root)
+```
+using slice() to grab row 2 in the compensation dataset  
+```{r}
+slice(compensation, 2)
+```
+we can grab multiple rows by giving a set number of rows by using ":" in between row numbers 
+```{r}
+slice(compensation, 2:10)
+```
+also can grab specific rows by using c() 
+```{r}
+slice(compensation, c(2,5,12))
+```
+using filter to find rows were the statement given is true or false and to return it as a dataset (using with() gives them as a true or false set). 
+```{r}
+filter(compensation, Fruit> 80) 
+```
+using other R logical or boolean to examine the data more and also assigning a value to those outputs
+```{r}
+filter(compensation, Fruit==80.31)
+filter(compensation, Fruit != 35) 
+filter(compensation, Fruit >= 74)
+filter(compensation, Root >75 | Root <10)
+filter(compensation, Fruit >90 & Root <2.3)
+equalto80.31<- filter(compensation, Fruit==80.31)
+```
+
+using mutate() to designate a new column with outputs from another column 
+```{r}
+compensation<- mutate(compensation, logFruit=log(Fruit))
+head(compensation)
+```
+
+using arrange() to set the data set in a perticular order 
+```{r}
+arrange(compensation, Fruit)
+```
+using filter() and select() to get specifics from a column based on the vector answer from another and if its true or false
+
+```{r}
+select(filter(compensation, Fruit>80), Root) 
+```
+
+you can also use "pipe" 
+```{r}
+compensation %>% filter(Fruit > 80) %>% select(Root)
+```
+
+now using summarise() and group_by() and some math function and assigning it 
+```{r}
+fruit.mean <- summarise(group_by(compensation, Grazing), meanFruit=mean(Fruit))
+```
+
+again we can also use pipe and extend the math functions to do more
+```{r}
+compensation %>% group_by(Grazing) %>% summarise(meanFruit=mean(Fruit))
+compensation %>% group_by(Grazing) %>% summarise(meanFruit=mean(Fruit), sdFruit=sd(Fruit))
+```
+

@@ -1,0 +1,11 @@
+---
+title: "hw15 feedback"
+format: html
+editor: visual
+---
+
+## Homework 15 feedback
+
+On lines 16 and 17, you can omit them, because both ggplot and dplyr are included in tidyverse.
+
+Your data folder did not include the compensation dataset, so I was unable to run your code (though it looked ok). Be sure in future that any code that you run has the data required for it within the r project data folder.

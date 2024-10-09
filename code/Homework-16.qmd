@@ -1,0 +1,90 @@
+---
+title: "Homework-16"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+This is a quarto document for biostat homework 16 code. 
+
+clearing R's brain and installing packages to be used 
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(here) 
+```
+reading the csv into R and assigning it in R's environment 
+```{r}
+cover<-read.csv(here("data","donnerville_percent_cover.csv"))
+```
+
+looking at the dataset 
+```{r}
+glimpse(cover)
+head(cover)
+```
+making Site, Plot type, and cover type into factor variables 
+
+```{r}
+cover$Site<- as.factor(cover$Site)
+cover$Plot.type<- as.factor(cover$Plot.type)
+cover$cover_type<- as.factor(cover$cover_type) 
+```
+
+making the date a date variable 
+```{r}
+install.packages("lubridate")
+library(lubridate)
+```
+```{r}
+cover$Date <- dmy(cover$Date)
+```
+
+fixing errors in data
+```{r}
+levels(cover$Site)
+fix1<- which(cover$Site%in% c("Donnerville 3","donnerville-3"))
+cover$Site[fix1] <- "Donnerville 3"
+ 
+
+
+fix2<- which(cover$Site%in% c("Donnerville 2", "donnerville 2"))
+cover$Site[fix2] <- "Donnerville 2"
+
+
+fix3 <- which(cover$Site%in% c("DONNERVILLE - 1", "donnerville 1", "Donnerville 1"))
+cover$Site[fix3] <- "Donnerville 1"
+cover$site<- factor(cover$Site)
+
+fix4<- which(cover$cover_type%in% c("bare" , "Bare"))
+cover$cover_type[fix4]<- "Bare"
+
+fix5<- which(cover$cover_type%in% c("bryophtes", "Bryophytes"))
+cover$cover_type[fix5]<- "Bryophytes"
+
+fix6 <- which(cover$cover_type%in% c("vasc ","Vascular"))
+cover$cover_type[fix6] <- "Vascular"
+cover$site<- factor(cover$cover_type)
+levels(cover$cover_type)
+```
+Determining average percent cover by type (bare, bryophytes, vascular plants) only in Donnerville 1 
+```{r}
+donnerville_1 <- cover %>% filter(Site == "Donnerville 1")
+average_cover_donnerville1 <- donnerville_1 %>%
+group_by(cover_type) %>%
+summarise(Percent = mean(Percent))
+```
+
+Determining the average vascular%plant cover over all sites
+```{r}
+
+filter(cover, cover_type == "Vascular") %>% 
+summarise(AveragePercentCover = mean(site))
+```
+
+looking at the frames
+```{r}
+average_cover_donnerville1
+average_vascular_all_sites
+
+```
+

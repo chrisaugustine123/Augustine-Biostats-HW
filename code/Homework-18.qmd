@@ -1,0 +1,108 @@
+---
+title: "Homework-18"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+
+Quarto document for homework 18 biostatistics class, looking into chapter 4 of the gswr book focusing on plots how exciting 
+
+
+getting things set up (tidyverse had ggplot2 and dyplr in it) 
+```{r}
+rm(list=ls()) 
+library(tidyverse)
+library(here) 
+```
+
+reading the compensation.csv into the R environment and assigning it 
+```{r}
+comp<- read.csv(here("data", "compensation.csv"))
+```
+looking at the data
+```{r}
+glimpse(comp)
+```
+
+
+using ggplot2 to make a simple scatterplot 
+```{r}
+ggplot(comp, aes(x=Root, y=Fruit))+
+  geom_point()
+#aes is a function that defines the graphs mapping
+# x and y equal to a column maps that to the corresponding axis 
+```
+
+everything in ggplot is built in layers so we always start with the type of code chunk above creating the baseline of the graph  
+
+adding a bw theme to the graph to get rid of the annoying white background 
+```{r}
+ggplot(comp, aes(x=Root, y=Fruit))+
+  geom_point() +
+  theme_bw() 
+```
+increasing the size of the points using a size argument in the geom_point function 
+```{r}
+ggplot(comp, aes(x = Root, y = Fruit)) +
+  geom_point(size = 5) +
+  theme_bw() 
+``` 
+
+again always end the layers with theme_bw() but xlab and ylab ("xlabel","ylabel") push out the column and add the label given in QUOTES 
+```{r}
+ggplot(comp, aes(x=Root, y=Fruit)) +
+  geom_point(size = 5) +
+  xlab("Root Biomass") + 
+  ylab("Fruit Production") + 
+  theme_bw() 
+```
+adjust the colours (weird how it being spelled different then my usual makes me remeber it easier)
+```{r}
+ggplot(comp, aes(x=Root, y=Fruit, colour = Grazing)) +
+  geom_point(size = 5) +
+  xlab("Root Biomass") + 
+  ylab("Fruit Production") + 
+  theme_bw() 
+```
+changing the shape of the points to correspond with the treatment 
+
+```{r}
+ggplot(comp, aes(x=Root, y=Fruit, colour = Grazing, shape= Grazing)) +
+  geom_point(size = 5) +
+  xlab("Root Biomass") + 
+  ylab("Fruit Production") + 
+  theme_bw() 
+```
+box-and-whisker plots
+```{r}
+ggplot(comp, aes(x= Grazing, y= Fruit)) +
+  geom_boxplot() +
+  geom_point(size = 4, colour = "lightgrey", alpha = 0.5) + #size and colour we went over but alpha is transparency and that is equal to a number)  
+  xlab("Grazing treatment") + 
+  ylab("Fruit Production") + 
+  theme_bw() 
+```
+histograms using geom=histogram() only give x variable computer does y 
+```{r}
+ggplot(comp, aes( x = Fruit)) +
+  geom_histogram()# but just this makes a ugly one 
+```
+
+so we do this 
+```{r}
+ggplot(comp, aes( x = Fruit)) +
+  geom_histogram(bins = 10) 
+ggplot(comp, aes(x = Fruit)) + 
+  geom_histogram(binwidth = 15) #this makes it pretty
+```
+we can also split the histogram into by treatment side note love how they justify this command in the book 
+```{r}
+ggplot(comp, aes(x = Fruit)) +
+  geom_histogram(binwidth = 15) + 
+  facet_wrap(~Grazing)
+```
+saving the histogram 
+```{r}
+ggsave("Homework-18-Histogram.png")
+```
+

@@ -1,0 +1,19 @@
+---
+title: "homework feedback"
+format: html
+editor: visual
+---
+
+## Homework feedback
+
+### Homework 16
+
+Line 42 - you don't need to install lubridate, as it loads with tidyverse.
+
+Lines 92 - you may find that using piping, as you did in the code chunk above this one, improves the readability of your code for future you and others.
+
+Otherwise looks good.
+
+### Homework 18
+
+You've done a good job here in documenting your thinking outside of code chunks and your code inside of code chunks. Keep it up!

@@ -1,0 +1,90 @@
+---
+title: "Biostats - Homework 20"
+format: html
+editor: visual
+---
+
+### Introduction
+
+The objective of this assignment is to have you continue practicing the skills you have learned in Chapters 3 and 4 of Getting Started with R and reinforce the ideas we discussed in class regarding the Weissgerber et al. paper. Please complete all of the following steps:
+
+1.  Write the code to set up your workspace.
+
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(here) 
+```
+
+2.  Read in the dataset called soil_data.csv and name it "soil."
+
+```{r}
+soil<- read.csv(here("data", "soil_data.csv"))
+```
+
+3.  Create a histogram for the SOM_percent column in the dataframe. Accept the default number of bins.
+
+```{r}
+ggplot(soil, aes(x = SOM_percent)) +
+  geom_histogram(binwidth = 5, fill = "red", color = "pink", alpha = 0.7) + #pink is not pink :(  
+  labs(title = "Histogram of SOM_percent column",
+       x = "SOM_percent") +
+  theme_minimal()
+  
+```
+
+How would you describe the mean_SOM data based on viewing the histogram? Write your answer below: 
+The histogram is right-skewed with a common value in 5% and having a peak of ~25. The spread is from 5% to 55% but drops off after 10% showing high SOM_percent is uncommon. Outliers are shown at %'s above 40% in very low counts.  
+
+
+4.  Create a new dataframe called SOM by calculating for each forest the mean soil organic matter and the standard deviation of soil organic matter. Make sure to name variables you create "mean_SOM" and "sd_SOM" so that the next code chunk I give you works.
+
+```{r}
+SOM <- soil %>%
+  group_by(Forest) %>%
+  summarise(
+    mean_SOM = mean(SOM_percent, na.rm = TRUE),
+    sd_SOM = sd(SOM_percent, na.rm = TRUE)
+  )
+SOM
+```
+
+5.  Now run the following code chunk which will create a bar plot of mean soil organic matter per forest, with standard deviation as error bars.
+
+```{r}
+ggplot(SOM, aes(Forest, mean_SOM))+
+  geom_errorbar(aes(ymax = mean_SOM + sd_SOM, ymin = mean_SOM - sd_SOM), width = 0.2)+
+  geom_col(fill = "white", color = "black")+
+  ylab("Mean percent soil organic matter")+
+  xlab("Forest name")
+```
+
+Based on what you see in the bar chart, how would you describe the pattern of SOM between the 4 different forests? Write your answer here: 
+Based on the bar chart I would describe the pattern as highest levels of SOM in the Kip Tract forest. Showing that it may have a richer soil of organic material. Donnerville showing a moderate amount while SH and Degrasse are low in SOM.  
+
+Now create a boxplot of the SOM_percent data. Use Forest as the x-axis variable and overlay the point data on top of the boxplot. Make the points blue and somewhat transparent. Call the x-axis "Forest name" and the y-axis "Percent soil organic matter" (hint: See homework 18...).
+
+```{r}
+ggplot(soil, aes(x = Forest, y = SOM_percent)) +
+  geom_boxplot(fill = "black", color = "lightgrey") +  
+  geom_point(aes(x = Forest, y = SOM_percent), color = "blue", alpha = 0.5, position = position_jitter(width = 0.2)) +
+  labs(
+    title = "Boxplot of SOM_percent by Forest",
+    x = "Forest name",
+    y = "Percent soil organic matter"  
+  ) +
+  theme_minimal()
+
+```
+
+Based on what you see in the box plot, write out your answers the following questions: 
+
+-   how would you describe the pattern of SOM between the 4 different forests? 
+
+Keeping the same theme from the bar chart with organization of high to low. But there is a showing of more magnitude for Kip Tract pushing farther from the other forests. 
+
+-   What do you notice that is different from how the data were displayed in the bar plot?
+The data in the bar chart does not show outliers and how a SD can be affected especially in donnerville by a singular outlier. The boxplot does a better job by showing points plotted of data. 
+
+-   Which plot type is more informative? Explain your answer.
+The boxplot is more informative because it shows the points of the data exactly creating a more transparnt view into why a SD may be higher or lower in some places. For example in Kip Tract the magnitude of a higher count is shown more drastically(in a good way). While in Donnerville the SD shows less respecatbility as its only one point shooting the SD bar all the way up to 22. 

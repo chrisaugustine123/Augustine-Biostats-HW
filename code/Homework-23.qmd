@@ -1,0 +1,62 @@
+---
+title: "Homework-23"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+
+getting things set up 
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(here)
+library(ggfortify)
+```
+
+reading in and assigning the plant.growth.rate csv 
+```{r}
+plant_gr<- read.csv(here("data", "plant.growth.rate.csv"))
+```
+
+looking at the data 
+```{r}
+glimpse(plant_gr)
+```
+making a scatterplot of the data 
+```{r}
+ggplot(plant_gr,
+       aes(x=soil.moisture.content, y=plant.growth.rate))+
+  geom_point()+
+  labs(
+    y = "Plant Growth Rate (mm/week)") +
+      theme_bw()
+```
+making a linear regression with the lm() function 
+```{r}
+model_pgr<- lm(plant.growth.rate ~ soil.moisture.content, data=plant_gr)
+```
+
+using the autoplot function which when provided a linear model by the lm() function will give 4 plots
+```{r}
+autoplot(model_pgr, smooth.colour = NA)
+```
+
+using the anova() function to make a sum of squares table
+```{r}
+anova(model_pgr)
+```
+using summary() function to make a table that reports model coefficient, standard errors, t and p values, R-squared values, adjusted R-squared, and F-statistics for the model overall
+```{r}
+summary(model_pgr)
+```
+slapping a linear model fitted line on our graph 
+```{r}
+ggplot(plant_gr,
+       aes(x=soil.moisture.content, y=plant.growth.rate))+
+  geom_point()+
+  geom_smooth(method = lm)
+  labs(
+    y = "Plant Growth Rate (mm/week)") +
+      theme_bw()
+```
+

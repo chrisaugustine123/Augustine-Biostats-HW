@@ -1,0 +1,54 @@
+---
+title: "Homework-25"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+
+setting things up 
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(here)
+library(ggfortify)
+```
+
+reading the csv in 
+```{r}
+dgrowth<- read.csv(here("data", "Daphniagrowth.csv"))
+head(dgrowth)
+```
+
+making a box and whisker plot looking at parasites and growthrate and introducing function coord_flip which just flips axis 
+```{r}
+ggplot(dgrowth, aes(x= parasite, y= growth.rate))+
+  geom_boxplot()+
+  theme_bw()+
+  coord_flip()
+```
+creating the table for later to use in the anova  
+```{r}
+model_grow<- lm(growth.rate ~ parasite, data= dgrowth)
+```
+
+looking at the diagnostic graphs from autoplot 
+```{r}
+autoplot(model_grow, smooth.color= NA) 
+```
+doing the anova test to see if there is an effect on the treatments 
+```{r}
+anova(model_grow)
+```
+
+getting a summary table to look at coefficients
+```{r}
+summary(model_grow)
+```
+getting the mean growth rates for the different treatment groups 
+```{r}
+sumDat<- dgrowth %>% 
+  group_by(parasite) %>% 
+  summarise(meanGR = mean(growth.rate))
+View(sumDat)
+```
+

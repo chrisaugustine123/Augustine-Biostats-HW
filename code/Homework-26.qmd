@@ -1,0 +1,75 @@
+---
+title: "Homework-26"
+author: "Christopher Augustine"
+format: html
+editor: visual
+---
+
+setting everything up and reading in the data
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(ggfortify)
+library(here)
+library(multcomp)
+```
+
+```{r}
+pea<- read.csv(here("data", "s_r_pea_sections.csv"))
+```
+
+making treatment a factor
+```{r}
+pea$Treatment<- as.factor(pea$Treatment)
+```
+
+making a boxplot of the data to look at and see if I can make an assumptions by comparing treatments to treatments and to the control also flipping it to see the treatments
+```{r}
+ggplot(pea, 
+  aes(x=Treatment, y=pea_section_length_ou))+
+  geom_boxplot()+
+  theme_minimal()+ coord_flip()
+  
+```
+I am seeing a major difference between all treatments and the control, mainly between control and 2% glucose, fructose, and 1% 1% fructose glucose mix. 2% percent sucrose also seems to have a difference in mean but less then the other 3 stated above 
+
+making a model to later check assumtions 
+```{r}
+model_pea<- lm(pea_section_length_ou ~ Treatment, data = pea)
+View(model_pea)
+```
+
+plotting the model to check assumptions 
+```{r}
+autoplot(model_pea)
+```
+
+seems good only thing I notice is in Normal Q-Q for checking normaility of residuals most points are following a line with some deviations not much tho prob nothing
+
+
+lets run the anova 
+```{r}
+anova(model_pea)
+```
+
+good small p value so we reject null hypo that there is no difference in means 
+
+now for the tukeyhsd test to see differences between treatments 
+```{r}
+tukeyres<-glht(model_pea, linfct = mcp(Treatment="Tukey"))
+```
+
+summary to actually see that result
+```{r}
+summary(tukeyres)
+```
+
+getting letters display for easier interpitation 
+```{r}
+cld(tukeyres)
+```
+1% fruc + 1% gluc, 2% fruc, 2% gluco are not signifacntly different from eachother but are significalty different from 2% sucro and control 
+
+Also control is significantly different from all other treatments as 2 % sucro is also significantly different from all other treatment groups 
+
+
